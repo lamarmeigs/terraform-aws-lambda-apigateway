@@ -1,7 +1,14 @@
-# For guidance, see:
-# https://developer.hashicorp.com/terraform/language/values/outputs
+output "api_url" {
+  value       = aws_api_gateway_deployment.this.invoke_url
+  description = "The URL of the APIGateway deployment"
+}
 
-output "greeting" {
-  value       = local.greeting
-  description = "A standard greeting"
+output "openapi_spec_json" {
+  value       = aws_api_gateway_rest_api.this.body
+  description = "The OpenAPI specification (in JSON) used to configure the APIGateway"
+}
+
+output "stage_arn" {
+  value       = aws_api_gateway_stage.this.arn
+  description = "ARN of the APIGateway stage"
 }
